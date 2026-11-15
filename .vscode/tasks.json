@@ -1,5 +1,12 @@
 {
   "version": "2.0.0",
+  "inputs": [
+    {
+      "id": "kaggleDataset",
+      "type": "promptString",
+      "description": "Identifiant du dataset Kaggle choisi (format : auteur/nom-du-dataset)"
+    }
+  ],
   "tasks": [
     {
       "label": "Cluster : Démarrer (task up)",
@@ -46,9 +53,9 @@
       "problemMatcher": []
     },
     {
-      "label": "TP Jour 1 : Télécharger le dataset Kaggle Olist (task data:download)",
+      "label": "TP Jour 1 : Télécharger votre dataset Kaggle dans data_raw/",
       "type": "shell",
-      "command": "task data:download",
+      "command": "task data:download DATASET=${input:kaggleDataset}",
       "presentation": {
         "reveal": "always",
         "panel": "shared"

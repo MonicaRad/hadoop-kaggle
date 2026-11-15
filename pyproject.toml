@@ -1,7 +1,7 @@
 [project]
 name = "tp-bigdata-lakehouse"
 version = "0.1.0"
-description = "TP Big Data Lakehouse : HDFS (3 DataNodes) + PySpark + Delta Lake + Streamlit sur Olist E-Commerce"
+description = "TP Big Data Lakehouse : HDFS (3 DataNodes) + PySpark + Delta Lake + Streamlit"
 readme = "README.md"
 requires-python = ">=3.11"
 dependencies = [
