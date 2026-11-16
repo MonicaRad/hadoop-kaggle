@@ -57,5 +57,11 @@ RUN uv pip install --no-cache -r /tmp/requirements.txt && \
     spark.stop(); \
     shutil.rmtree('/tmp/delta_smoke', ignore_errors=True)"
 
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    wget \
+    unzip \
+    libatomic1 \
+    && rm -rf /var/lib/apt/lists/*
+
 # Métadonnées Dev Container intégrées à l'image (actives aussi via "Attach Visual Studio Code" sur spark-jupyter)
 LABEL devcontainer.metadata='[{"customizations":{"vscode":{"extensions":["ms-python.python","ms-python.vscode-pylance","ms-python.debugpy","charliermarsh.ruff","ms-toolsai.jupyter","ms-toolsai.jupyter-keymap","ms-toolsai.jupyter-renderers","mechatroner.rainbow-csv","redhat.vscode-xml","redhat.vscode-yaml"],"settings":{"python.defaultInterpreterPath":"/usr/local/bin/python3","jupyter.kernels.trusted":["/usr/local/share/jupyter/kernels/python3/kernel.json"]}}}}]'
