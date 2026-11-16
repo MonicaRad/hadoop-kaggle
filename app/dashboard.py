@@ -137,6 +137,25 @@ else:
             )
             st.plotly_chart(fig_m, use_container_width=True)
 
+        if "kpi_acquisition_channels" in gold_tables:
+            df_chan = load_gold_table("/lakehouse/gold/kpi_acquisition_channels")
+            df_chan_b2b = df_chan[df_chan["acquisition_channel"] != "organic_or_legacy"].head(10)
+            if not df_chan_b2b.empty:
+                st.subheader("Performance par canal d'acquisition vendeur B2B (Jointure Multi-Datasets)")
+                fig_ch = px.bar(
+                    df_chan_b2b,
+                    x="acquisition_channel",
+                    y="total_revenue",
+                    color="median_basket",
+                    title="CA et panier médian par canal d'acquisition B2B (`marketing-funnel-olist` ⋈ `brazilian-ecommerce`)",
+                    labels={
+                        "acquisition_channel": "Canal d'acquisition B2B",
+                        "total_revenue": "CA Total (BRL)",
+                        "median_basket": "Panier médian (BRL)",
+                    },
+                )
+                st.plotly_chart(fig_ch, use_container_width=True)
+
         if "customer_rfm" in gold_tables:
             df_rfm = load_gold_table("/lakehouse/gold/customer_rfm")
             st.subheader("Segmentation Clients RFM")
